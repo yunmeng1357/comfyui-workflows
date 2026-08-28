@@ -1,0 +1,107 @@
+{
+  "1": {
+    "inputs": {
+      "ckpt_name": "Krea2-turbo-White_Marble-AIO_V1_BF16.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Checkpoint加载器(简易)"
+    }
+  },
+  "4": {
+    "inputs": {
+      "text": "A fierce Chinese female warrior (Xia), cold and stoic expression, sharp piercing eyes with a hint of ruthlessness, bold and heroic aura, long jet-black hair wildly flowing in the wind, holding a gleaming longsword (Jian) with a crimson tassel, dynamic sword-drawing action pose with one hand gripping the hilt and the other forming a martial arts hand seal, standing on the ridge of an ancient Chinese palace rooftop at night, full moon dominating the background, misty fog swirling around the eaves, red plum blossom petals drifting in the air, distant mountain silhouettes, wearing an exquisite black and crimson red Hanfu robe with intricate gold dragon embroidery, layered silk sleeves, dark leather shoulder armor with brass rivets, fabric texture highly detailed, dramatic rim lighting from the moonlight, high contrast chiaroscuro, cool blue shadows against warm orange highlights, volumetric fog catching the light, blade reflecting the moon, Shot on Hasselblad X1D with 65mm f/2.8, eye-level low-angle hero shot, rule of thirds composition, negative space on the left for text overlay, cinematic widescreen 16:9 aspect ratio, shallow depth of field with bokeh background, epic wuxia atmosphere, majestic and imposing, cinematic realism, photorealistic, 8k, ultra-detailed, sharp focus on the eyes and blade, subtle motion blur on flowing hair and tassel, inspired by Zhang Yimou film aesthetics, award-winning photography style",
+      "clip": [
+        "1",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP文本编码器（正向）"
+    }
+  },
+  "5": {
+    "inputs": {
+      "text": "worst quality, low quality, lowres, blurry, pixelated, jpeg artifacts, distorted, bad anatomy, deformed, disfigured, mutated hands, extra fingers, missing fingers, poorly drawn face, asymmetrical eyes, unnatural body proportions, twisted limbs, extra limbs, elongated neck, contorted pose, plastic skin, waxy skin, oversaturated, overexposed, glossy CG render, 3d render, cartoon style, anime style, illustration, painting, watercolor, artificial looking, fake, airbrushed, smooth surface, cropped, cut off, frame, border, multiple views, collage, messy background, cluttered, distracting elements, watermark, signature, text, logo, date stamp",
+      "clip": [
+        "1",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP文本编码器（反向）"
+    }
+  },
+  "6": {
+    "inputs": {
+      "seed": 144383707939217,
+      "steps": 20,
+      "cfg": 8,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1,
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "4",
+        0
+      ],
+      "negative": [
+        "5",
+        0
+      ],
+      "latent_image": [
+        "8",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "K采样器"
+    }
+  },
+  "8": {
+    "inputs": {
+      "width": 512,
+      "height": 512,
+      "batch_size": 3
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "空Latent"
+    }
+  },
+  "9": {
+    "inputs": {
+      "samples": [
+        "6",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE解码"
+    }
+  },
+  "10": {
+    "inputs": {
+      "filename_prefix": "ComfyUI",
+      "images": [
+        "9",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "保存图像"
+    }
+  }
+}
