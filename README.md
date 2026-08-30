@@ -5,11 +5,11 @@ ComfyUI 工作流合集
 
 工作流列表
 
-1. 女侠批量生图（古风主题）
-   模型：Krea2-turbo-White_Marble-AIO_V1_BF16
+1. 风景批量生图（自然主题）
+   模型：epicrealism_pureEvolutionV5-inpainting
    参数：512x512，batch_size=3，euler采样器，20步，CFG=8
-   用途：批量生成统一风格的古风女侠图片
-   文件：空白工作流_api.json
+   用途：批量生成写实风格的风景图片（山脉、湖泊、日出等自然景观）
+   文件：个人工作流-风景_api.json
 
 2. 赛博城市批量生图（科幻主题）
    模型：epicrealism_pureEvolutionV5-inpainting
