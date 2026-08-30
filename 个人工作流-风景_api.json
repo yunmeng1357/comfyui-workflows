@@ -1,0 +1,107 @@
+{
+  "1": {
+    "inputs": {
+      "ckpt_name": "epicrealism_pureEvolutionV5-inpainting.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Checkpoint加载器(简易)"
+    }
+  },
+  "4": {
+    "inputs": {
+      "text": "A majestic mountain landscape at sunrise, snow-capped peaks reflecting golden sunlight, misty clouds swirling around the valleys, a crystal clear alpine lake with mirror-like reflection of the mountains, dense pine forest covering the lower slopes, colorful wildflowers blooming in the foreground, gentle morning light creating long soft shadows, dramatic sky with warm orange and pink clouds, cinematic wide angle composition, inspiring and peaceful atmosphere, national geographic photography style, 8k, ultra detailed, sharp focus from foreground to infinity, natural color palette, depth of field creating a sense of scale, awe inspiring wilderness scenery",
+      "clip": [
+        "1",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP文本编码器"
+    }
+  },
+  "5": {
+    "inputs": {
+      "text": "worst quality, low quality, lowres, blurry, jpeg artifacts, distorted, deformed, disfigured, mutated, extra limbs, missing limbs, bad proportions, watermark, signature, text, logo, messy, cluttered, washed out colors, flat lighting, amateur, low effort, ugly, bad anatomy",
+      "clip": [
+        "1",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP文本编码器"
+    }
+  },
+  "6": {
+    "inputs": {
+      "seed": 503044302942235,
+      "steps": 20,
+      "cfg": 8,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1,
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "4",
+        0
+      ],
+      "negative": [
+        "5",
+        0
+      ],
+      "latent_image": [
+        "8",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "K采样器"
+    }
+  },
+  "8": {
+    "inputs": {
+      "width": 512,
+      "height": 512,
+      "batch_size": 3
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "空Latent"
+    }
+  },
+  "9": {
+    "inputs": {
+      "samples": [
+        "6",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE解码"
+    }
+  },
+  "10": {
+    "inputs": {
+      "filename_prefix": "ComfyUI",
+      "images": [
+        "9",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "保存图像"
+    }
+  }
+}
